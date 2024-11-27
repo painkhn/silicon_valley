@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/output.css">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jura:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <title>Silicon Valley</title>
+</head>
+<body>
+    <header class="w-full min-h-24 flex items-center justify-between px-20">
+        <div class="flex items-center">
+            <a href="index.html">
+                <img src="public/img/logo.svg" alt="" class="transition-all hover:opacity-80">
+            </a>
+            <nav>
+                <ul class="flex items-center ml-20 gap-10 text-2xl opacity-80 transition-all hover:opacity-100">
+                    <li><a href="#!" class="transition-all hover:text-[#396320]">Игровые ПК</a></li>
+                    <li><a href="#!" class="transition-all hover:text-[#396320]">Личный кабинет</a></li>
+                    <li><a href="#!" class="transition-all hover:text-[#396320]">О нас</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="flex items-center">
+            <input type="search" name="" id="" class="searchInput hidden border border-[#396320] w-96 w rounded-md mr-2 h-11 transition-all outline-none px-4 focus:ring-2 focus:ring-[#396320]">
+            <button onclick="searchToggle()" type="button" class="searchToggleButton outline-none">
+                <svg class="w-6 h-6 text-[#396320]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                </svg>
+            </button>
+            <a href="#!" class="ml-10">
+                <svg class="w-6 h-6 text-[#396320]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="my-12">
+        <div class="max-w-[1500px] w-full h-auto mx-auto my-0">
+            <div class="w-full h-[874px] mb-24">
+                <img src="public/img/pc-image.png" alt="">
+            </div>
+            <div class="w-full h-[874px] flex relative justify-center mb-24">
+                <img src="public/img/pc-image-2.jpg" alt="" class="w-full absolute -z-10 pointer-events-none top-1/2 -translate-y-1/2">
+                <div class="text-white text-center pt-[180px]">
+                    <h1 class="text-5xl">
+                        Игровые компьтеры
+                    </h1>
+                    <p class="text-3xl">
+                        Компьютеры для геймеров
+                    </p>
+                    <button class="w-64 h-16 text-[#254115] bg-[#C0FF01] text-3xl mt-5 rounded-2xl transition-all hover:bg-green-400">
+                        Подробнее
+                    </button>
+                </div>
+            </div>
+            <div class="w-full h-[874px] flex relative justify-center mb-24">
+                <img src="public/img/pc-image-3.png" alt="" class="w-full absolute -z-10 pointer-events-none top-1/2 -translate-y-1/2">
+                <div class="text-white text-center pt-14">
+                    <h1 class="text-5xl">
+                        Бюджетные компьтеры
+                    </h1>
+                    <p class="text-3xl">
+                        Компьютеры для геймеров
+                    </p>
+                    <button class="w-64 h-16 text-[#254115] bg-[#C0FF01] text-3xl mt-5 rounded-2xl transition-all hover:bg-green-400">
+                        Подробнее
+                    </button>
+                </div>
+            </div>
+            <div class="w-full h-[874px] flex relative justify-center">
+                <img src="public/img/why-image.png" alt="" class="w-full absolute -z-10 pointer-events-none top-1/2 -translate-y-1/2">
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full min-h-36">
+        <p>
+            2005-2024 Silicon Valley. Все права защищены.
+        </p>
+        <div>
+            <p>
+                Оффициальные статусы
+            </p>
+        </div>
+    </footer>
+
+    <script src="src/script.js"></script>
+</body>
+</html>

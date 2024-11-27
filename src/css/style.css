@@ -1,0 +1,7 @@
+body {
+    font-family: "Jura", sans-serif;
+}
+
+main {
+    min-height: calc( 100vh - 96px);
+}
