@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, CategoryController, AdminController};
+use App\Http\Controllers\{ProfileController, CategoryController, AdminController,
+    ProductController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 
@@ -21,6 +22,11 @@ Route::get('/dashboard', function () {
 Route::controller(CategoryController::class)->group(function () {
     Route::post('/category', 'upload')->name('category.upload');
 });
+Route::controller(ProductController::class)->group(function () {
+    Route::post('/product', 'upload')->name('product.upload');
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

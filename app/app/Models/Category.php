@@ -10,4 +10,10 @@ class Category extends Model
         'name',
         'description'
     ];
+
+    // Связь с продуктами (категория может иметь много продуктов)
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

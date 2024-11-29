@@ -14,13 +14,23 @@ return new class extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type', ['video_card', 'processor', 'motherboard', 'ram', 'ssd']);
+            $table->enum('type', [
+                'video_card',
+                'processor',
+                'motherboard',
+                'cooling',
+                'ram',
+                'ssd',
+                'power_supply',
+                'case'
+            ]);
             $table->string('image_path')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->timestamps();
 
-            $table->foreign('mark_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
+
     }
 
     /**

@@ -10,6 +10,7 @@ class Component extends Model
         'name', 'type', 'image_path', 'product_id',
     ];
 
+    // Связь с продуктом (компонент принадлежит одному продукту)
     public function product()
     {
         return $this->belongsTo(Product::class);
