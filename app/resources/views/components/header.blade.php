@@ -5,12 +5,13 @@
         </a>
         <nav>
             <ul class="flex items-center ml-20 gap-10 text-2xl opacity-80 transition-all hover:opacity-100">
-                <li><a href="#!" class="transition-all hover:text-[#396320]">Игровые ПК</a></li>
+                <li><a href="{{ route('product.index') }}" class="transition-all hover:text-[#396320]">Игровые ПК</a></li>
                 <li><a href="{{ asset('dashboard') }}" class="transition-all hover:text-[#396320]">Личный кабинет</a>
                 </li>
                 <li><a href="{{ route('about') }}" class="transition-all hover:text-[#396320]">О нас</a></li>
                 @if (Auth::user() && Auth::user()->is_admin == 1)
-                    <li><a href="{{ route('admin.index') }}" class="transition-all hover:text-[#396320]">Админка</a>
+                    <li>
+                        <a href="{{ route('admin.index') }}" class="transition-all hover:text-[#396320]">Админка</a>
                     </li>
                 @endif
             </ul>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Component extends Model
 {
     protected $fillable = [
-        'name', 'type', 'image_path', 'product_id',
+        'name', 'type', 'image_path', 'product_id', 'price'
     ];
 
     // Связь с продуктом (компонент принадлежит одному продукту)

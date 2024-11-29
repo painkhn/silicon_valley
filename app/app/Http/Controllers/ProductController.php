@@ -10,11 +10,21 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    public function index()
+    {
+        $categories = Category::with([
+            'products.components'
+        ])->get();
+
+        return view('catalog', compact('categories'));
+    }
+
     public function upload(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'price' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'components.*.name' => 'required|string|max:255',
@@ -24,6 +34,7 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->name = $request->input('name');
+        $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->category_id = $request->input('category_id');
 
@@ -49,6 +60,12 @@ class ProductController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function show($id) {
+        return view('product', [
+            'product' => Product::with('category', 'components')->findOrFail($id)
+        ]);
     }
 
 }

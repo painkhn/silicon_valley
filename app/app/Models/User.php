@@ -47,4 +47,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Связь с моделью Basket
+    public function baskets()
+    {
+        return $this->hasMany(Basket::class);
+    }
 }

@@ -10,15 +10,21 @@ class Product extends Model
         'name', 'description', 'category_id', 'image_path',
     ];
 
-    // Связь с категорией (множество продуктов к одной категории)
+    // Связь с категорией
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // Связь с компонентами (один продукт может иметь много компонентов)
+    // Связь с компонентами
     public function components()
     {
         return $this->hasMany(Component::class);
+    }
+
+    // Связь с моделью Basket
+    public function baskets()
+    {
+        return $this->hasMany(Basket::class);
     }
 }
