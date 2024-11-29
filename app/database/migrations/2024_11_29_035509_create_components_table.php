@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->unsignedBigInteger('category_id');
+            $table->enum('type', ['video_card', 'processor', 'motherboard', 'ram', 'ssd']);
+            $table->string('image_path')->nullable();
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
 
             $table->foreign('mark_id')->references('id')->on('products')->onDelete('cascade');
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('components');
     }
 };

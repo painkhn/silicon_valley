@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, CategoryController};
+use App\Http\Controllers\{ProfileController, CategoryController, AdminController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 
@@ -12,13 +12,11 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin.index');
+Route::get('/admin', [AdminController::class, 'index'])->middleware(IsAdmin::class)->name('admin.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->middleware(IsAdmin::class)->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::controller(CategoryController::class)->group(function () {
     Route::post('/category', 'upload')->name('category.upload');

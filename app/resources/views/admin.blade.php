@@ -13,6 +13,16 @@
                             <textarea name="" id="" placeholder="Описание"
                                 class="w-full h-32 !rounded-xl !px-10 focus:!ring-[#396320] focus:!border-[#396320]"></textarea>
                             <div>
+                                <label for="category">Категория товара</label>
+                                <select name="category_id" id="category"
+                                    class="w-full h-14 !rounded-xl !px-10 focus:!ring-[#396320] focus:!border-[#396320]">
+                                    <option value="">Выберите категорию</option>
+                                    @foreach ($category as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
                                 <label>Фото товара</label>
                                 <input
                                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"

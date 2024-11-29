@@ -10,7 +10,8 @@
                 </li>
                 <li><a href="{{ route('about') }}" class="transition-all hover:text-[#396320]">О нас</a></li>
                 @if (Auth::user() && Auth::user()->is_admin == 1)
-                    <li><a href="{{ route('about') }}" class="transition-all hover:text-[#396320]">Админка</a></li>
+                    <li><a href="{{ route('admin.index') }}" class="transition-all hover:text-[#396320]">Админка</a>
+                    </li>
                 @endif
             </ul>
         </nav>
