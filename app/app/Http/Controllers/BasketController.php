@@ -49,4 +49,39 @@ class BasketController extends Controller
 
         return redirect()->route('basket.index');
     }
+
+    public function updateQuantity(Request $request)
+    {
+        $user = Auth::user();
+
+        $basketItem = Basket::where('product_id', $request->product_id)
+                            ->where('user_id', $user->id)
+                            ->first();
+
+        if ($basketItem) {
+            $basketItem->count = $request->quantity;
+            $basketItem->save();
+
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Корзина не обновлена']);
+    }
+
+    public function removeFromBasket($productId)
+    {
+        $user = Auth::user();
+
+        $basketItem = Basket::where('product_id', $productId)
+                            ->where('user_id', $user->id)
+                            ->first();
+
+        if ($basketItem) {
+            $basketItem->delete();
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Товар не найден в корзине']);
+    }
+
 }

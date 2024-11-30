@@ -68,4 +68,8 @@ class ProductController extends Controller
         ]);
     }
 
+    public function search(Request $request) {
+        $product = Product::where('name', $request->word)->firstOrFail();
+        return $this->show($product->id);
+    }
 }

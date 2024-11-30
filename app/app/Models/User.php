@@ -53,4 +53,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Basket::class);
     }
+
+    // Связь с заказами
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

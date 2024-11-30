@@ -17,7 +17,7 @@
                             {{ Auth::user()->phone }}
                         </p>
                         <p>
-                            Товаров куплено: 52
+                            Заказов: {{ $orders->count() }}
                         </p>
                     </div>
                 </div>
@@ -39,35 +39,26 @@
             </div>
             <div class="w-1/3">
                 <h3 class="mb-5 text-xl font-medium">
-                    Компьютеры в корзине:
+                    Заказы:
                 </h3>
                 <ul class="flex flex-col gap-5">
-                    <li>
-                        <div class="flex gap-5">
-                            <img src="{{ asset('img/pc-image.png') }}" alt="" class="h-[150px]">
-                            <div>
-                                <h3 class="text-3xl">
-                                    Название
-                                </h3>
-                                <button class="text-xl text-[#396320]">
-                                    Спецификация
-                                </button>
+                    @foreach ($orders as $item)
+                        <li>
+                            <div class="flex gap-5">
+                                <img src="{{ asset('storage/' . $item->product->image_path) }}" alt=""
+                                    class="h-[150px]">
+                                <div>
+                                    <h3 class="text-3xl">
+                                        {{ $item->product->name }}
+                                    </h3>
+                                    <button class="text-xl text-[#396320]">
+                                        {{ $item->product->category->name }}
+                                    </button>
+                                    <p>Кол-во: {{ $item->count }}</p>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="flex gap-5">
-                            <img src="{{ asset('img/pc-image.png') }}" alt="" class="h-[150px]">
-                            <div>
-                                <h3 class="text-3xl">
-                                    Название
-                                </h3>
-                                <button class="text-xl text-[#396320]">
-                                    Спецификация
-                                </button>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

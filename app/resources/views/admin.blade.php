@@ -20,8 +20,8 @@
                                 class="w-full h-32 !rounded-xl !px-10 focus:!ring-[#396320] focus:!border-[#396320]" required></textarea>
 
                             <!-- Выбор категории -->
-                            <input name="price" placeholder="Описание" type='number'
-                                class="w-full h-32 !rounded-xl !px-10 focus:!ring-[#396320] focus:!border-[#396320]"
+                            <input name="price" placeholder="Цена" type='number'
+                                class="w-full !rounded-xl !px-10 focus:!ring-[#396320] focus:!border-[#396320]"
                                 required></input>
 
                             <!-- Выбор категории -->
