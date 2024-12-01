@@ -23,6 +23,6 @@ class OrderController extends Controller
         }
 
         Basket::where('user_id', $userId)->delete();
-        return redirect()->route('profile.index');
+        return redirect()->route('dashboard');
     }
 }
