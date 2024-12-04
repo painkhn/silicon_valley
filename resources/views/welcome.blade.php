@@ -1,9 +1,6 @@
 <x-app-layout>
     <main class="my-12">
         <div class="max-w-[1500px] w-full h-auto mx-auto my-0">
-            <div class="w-full h-[874px] mb-24">
-                <img src="{{ asset('img/pc-image.png') }}" alt="">
-            </div>
             <div class="w-full h-[874px] flex relative justify-center mb-24">
                 <img src="{{ asset('img/pc-image-2.jpg') }}" alt=""
                     class="w-full absolute -z-10 pointer-events-none top-1/2 -translate-y-1/2">
