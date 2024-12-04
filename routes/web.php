@@ -34,11 +34,13 @@ Route::controller(ProductController::class)->group(function () {
 
 Route::post('/search', [ProductController::class, 'search'])->name('product.search');
 
-Route::controller(BasketController::class)->group(function () {
-    Route::get('/basket', 'index')->name('basket.index');
-    Route::post('/basket/add', 'addToBasket')->name('basket.add');
-    Route::post('/basket/update', 'updateQuantity')->name('basket.update');
-    Route::delete('/basket/remove/{productId}', 'removeFromBasket')->name('basket.remove');
+Route::middleware('auth')->group(function () {
+    Route::controller(BasketController::class)->group(function () {
+        Route::get('/basket', 'index')->name('basket.index');
+        Route::post('/basket/add', 'addToBasket')->name('basket.add');
+        Route::post('/basket/update', 'updateQuantity')->name('basket.update');
+        Route::delete('/basket/remove/{productId}', 'removeFromBasket')->name('basket.remove');
+    });
 });
 
 Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');

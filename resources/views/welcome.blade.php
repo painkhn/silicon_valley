@@ -14,10 +14,12 @@
                     <p class="text-3xl">
                         Компьютеры для геймеров
                     </p>
-                    <button
-                        class="w-64 h-16 text-[#254115] bg-[#C0FF01] text-3xl mt-5 rounded-2xl transition-all hover:bg-green-400">
-                        Подробнее
-                    </button>
+                    <a href="{{ route('product.index') }}">
+                        <button
+                            class="w-64 h-16 text-[#254115] bg-[#C0FF01] text-3xl mt-5 rounded-2xl transition-all hover:bg-green-400">
+                            Подробнее
+                        </button>
+                    </a>
                 </div>
             </div>
             <div class="w-full h-[874px] flex relative justify-center mb-24">
@@ -30,10 +32,12 @@
                     <p class="text-3xl">
                         Компьютеры для геймеров
                     </p>
-                    <button
-                        class="w-64 h-16 text-[#254115] bg-[#C0FF01] text-3xl mt-5 rounded-2xl transition-all hover:bg-green-400">
-                        Подробнее
-                    </button>
+                    <a href="{{ route('product.index') }}">
+                        <button
+                            class="w-64 h-16 text-[#254115] bg-[#C0FF01] text-3xl mt-5 rounded-2xl transition-all hover:bg-green-400">
+                            Подробнее
+                        </button>
+                    </a>
                 </div>
             </div>
             <div class="w-full h-[874px] flex relative justify-center">

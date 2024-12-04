@@ -32,6 +32,9 @@
                         class="py-4 !bg-[#C0FF01] text-xl transition-all hover:!bg-[#396320] hover:text-white rounded-xl">
                         Регистрация
                     </button>
+                    <a href="{{ route('login') }}" class="text-center text-2xl transition-all hover:text-[#396320]">
+                        Вход
+                    </a>
                 </form>
             </div>
         </div>

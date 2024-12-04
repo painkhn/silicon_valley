@@ -21,16 +21,16 @@ class ProductController extends Controller
 
     public function upload(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|integer',
-            'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'components.*.name' => 'required|string|max:255',
-            'components.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'components.*.type' => 'required|string|in:video_card,processor,motherboard,cooling,ram,ssd,power_supply,case',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'description' => 'required|string',
+        //     'price' => 'required|integer',
+        //     'category_id' => 'required|exists:categories,id',
+        //     'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     'components.*.name' => 'required|string|max:255',
+        //     'components.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     'components.*.type' => 'required|string|in:video_card,processor,motherboard,cooling,ram,ssd,power_supply,case',
+        // ]);
 
         $product = new Product();
         $product->name = $request->input('name');

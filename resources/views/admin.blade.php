@@ -1,4 +1,5 @@
 <x-app-layout>
+<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" />
     <main class="py-20">
         <div class="px-10">
             <div class="max-w-6xl w-full h-auto mx-auto my-0 flex justify-between">
@@ -160,8 +161,91 @@
                             </button>
                         </div>
                     </form>
+                    <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+                    <div class="flex justify-between">
+                        <div>
+                        <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">{{ $allCount }}</h5>
+                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Продаж за последнюю неделю</p>
+                        </div>
+                    </div>
+                    <div id="area-chart"></div>
                 </div>
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script>
+    const options = {
+        chart: {
+            height: "100%",
+            maxWidth: "100%",
+            type: "area",
+            fontFamily: "Inter, sans-serif",
+            dropShadow: {
+            enabled: false,
+            },
+            toolbar: {
+            show: false,
+            },
+        },
+        tooltip: {
+            enabled: true,
+            x: {
+            show: false,
+            },
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+            opacityFrom: 0.55,
+            opacityTo: 0,
+            shade: "#1C64F2",
+            gradientToColors: ["#1C64F2"],
+            },
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            width: 6,
+        },
+        grid: {
+            show: false,
+            strokeDashArray: 4,
+            padding: {
+            left: 2,
+            right: 2,
+            top: 0
+            },
+        },
+        series: [
+            {
+            name: "Продаж",
+            data: @json($salesCounts),
+            color: "#1A56DB",
+            },
+        ],
+        xaxis: {
+            categories: @json($dates),
+            labels: {
+            show: false,
+            },
+            axisBorder: {
+            show: false,
+            },
+            axisTicks: {
+            show: false,
+            },
+        },
+        yaxis: {
+            show: false,
+        },
+        }
+
+        if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(document.getElementById("area-chart"), options);
+        chart.render();
+        }
+    </script>
 </x-app-layout>
