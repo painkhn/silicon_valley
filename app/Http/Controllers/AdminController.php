@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Exports\OrdersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use App\Models\Order;
 
@@ -43,5 +45,9 @@ class AdminController extends Controller
                 $today->format('d F')
             ]
         ]);
+    }
+
+    public function exel() {
+        return Excel::download(new OrdersExport, 'orders.xlsx');
     }
 }

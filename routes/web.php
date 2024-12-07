@@ -14,6 +14,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware(IsAdmin::class)->name('admin.index');
+Route::get('/exel', [AdminController::class, 'exel'])->middleware(IsAdmin::class)->name('admin.exel');
 
 Route::get('/dashboard', [ProfileController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
