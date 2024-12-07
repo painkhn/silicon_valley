@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    /**
+     * Создание заказа
+     */
     public function create()
     {
         $userId = Auth::id();

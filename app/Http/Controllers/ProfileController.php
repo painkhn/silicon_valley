@@ -12,7 +12,7 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Открытие настроек пользователя
      */
     public function edit(Request $request): View
     {
@@ -22,7 +22,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the user's profile information.
+     * Обновление инфомрации о пользователе
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
@@ -33,8 +33,8 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    /**
-     * Delete the user's account.
+   /**
+     * Удаление аккаунта
      */
     public function destroy(Request $request): RedirectResponse
     {
@@ -52,5 +52,11 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function dashboard() {
+        return view('dashboard', [
+            'orders' => Order::with('product.category')->where('user_id', Auth::id())->get()
+        ]);
     }
 }

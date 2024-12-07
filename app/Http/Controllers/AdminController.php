@@ -9,14 +9,19 @@ use App\Models\Order;
 
 class AdminController extends Controller
 {
+
+    /**
+     * Открытие админки
+     */
     public function index() {
+        //Получаем стату для графика
         $today = Carbon::now();
-        
+
         $salesCounts = [];
-    
+
         $allCount = 0;
         $salesCounts = [];
-        
+
         for ($i = 6; $i >= 0; $i--) {
             $date = $today->copy()->subDays($i)->toDateString();
             $count = Order::whereDate('created_at', $date)->sum('count');

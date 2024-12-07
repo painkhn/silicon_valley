@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
+    /**
+     * Открытие корзины
+     */
     public function index()
     {
         $user = Auth::user();
@@ -22,6 +25,9 @@ class BasketController extends Controller
         return view('basket', compact('baskets', 'totalAmount'));
     }
 
+    /**
+     * Добавление в корзину
+     */
     public function addToBasket(Request $request)
     {
         $product = Product::find($request->product_id);
@@ -50,6 +56,9 @@ class BasketController extends Controller
         return redirect()->route('basket.index');
     }
 
+    /**
+     * Обновление кол-во товара в корзине
+     */
     public function updateQuantity(Request $request)
     {
         $user = Auth::user();
@@ -68,6 +77,9 @@ class BasketController extends Controller
         return response()->json(['success' => false, 'message' => 'Корзина не обновлена']);
     }
 
+    /**
+     * Удаление из корзины
+     */
     public function removeFromBasket($productId)
     {
         $user = Auth::user();

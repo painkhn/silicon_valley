@@ -19,19 +19,16 @@ class ProductController extends Controller
         return view('catalog', compact('categories'));
     }
 
+    public function delete($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->route('index');
+    }
+
     public function upload(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'description' => 'required|string',
-        //     'price' => 'required|integer',
-        //     'category_id' => 'required|exists:categories,id',
-        //     'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        //     'components.*.name' => 'required|string|max:255',
-        //     'components.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        //     'components.*.type' => 'required|string|in:video_card,processor,motherboard,cooling,ram,ssd,power_supply,case',
-        // ]);
-
         $product = new Product();
         $product->name = $request->input('name');
         $product->price = $request->input('price');
@@ -64,12 +61,34 @@ class ProductController extends Controller
 
     public function show($id) {
         return view('product', [
-            'product' => Product::with('category', 'components')->findOrFail($id)
+            'product' => Product::with('category', 'components')->findOrFail($id),
+            'category' => Category::all()
         ]);
     }
 
     public function search(Request $request) {
         $product = Product::where('name', $request->word)->firstOrFail();
         return $this->show($product->id);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $product = Product::findOrFail($id);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'price' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->category_id = $request->input('category_id');
+
+        $product->save();
+
+        return redirect()->route('product.show', ['id' => $product->id]);
     }
 }

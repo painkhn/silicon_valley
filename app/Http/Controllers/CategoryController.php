@@ -7,6 +7,9 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
+    /**
+     * Добавлегте категории
+     */
     public function upload(Request $request) {
         $validate = $request->validate([
             'name' => 'required|string',

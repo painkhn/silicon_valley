@@ -3,8 +3,6 @@
 use App\Http\Controllers\{ProfileController, CategoryController,
     AdminController, ProductController, BasketController, OrderController};
 use Illuminate\Support\Facades\Route;
-use App\Models\Order;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\IsAdmin;
 
 Route::get('/', function () {
@@ -17,11 +15,7 @@ Route::get('/about', function () {
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware(IsAdmin::class)->name('admin.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        'orders' => Order::with('product.category')->where('user_id', Auth::id())->get()
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ProfileController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 Route::controller(CategoryController::class)->group(function () {
     Route::post('/category', 'upload')->name('category.upload');
@@ -33,6 +27,8 @@ Route::controller(ProductController::class)->group(function () {
 });
 
 Route::post('/search', [ProductController::class, 'search'])->name('product.search');
+Route::delete('/product/{id}/delete', [ProductController::class, 'delete'])->middleware(IsAdmin::class)->name('product.delete');
+Route::patch('/product/{id}/update', [ProductController::class, 'update'])->middleware(IsAdmin::class)->name('product.update');
 
 Route::middleware('auth')->group(function () {
     Route::controller(BasketController::class)->group(function () {
