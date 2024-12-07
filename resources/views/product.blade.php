@@ -10,36 +10,38 @@
                         {{ $product->description }}
                     </p>
                     <div class="flex gap-10 items-center">
-                        <div class="flex flex-col">
-                            <p class="text-3xl">
-                                Цена {{ $product->price }} ₽
-                            </p>
-                            @if (Auth::user() && Auth::user()->is_admin == 1)
-                                <form action="{{ route('product.delete', [$product->id]) }}" method="POST"
-                                    class="w-min h-min p-0 m-0 border-0" id="deleteForm">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button
+                        <div class="grid gap-5 w-full">
+                            <div class="flex flex-col gap-5">
+                                <p class="text-3xl">
+                                    Цена {{ $product->price }} ₽
+                                </p>
+                                @if (Auth::user() && Auth::user()->is_admin == 1)
+                                    <form action="{{ route('product.delete', [$product->id]) }}" method="POST"
+                                        class="w-min h-min p-0 m-0 border-0" id="deleteForm">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                            class="px-14 py-4 text-xl !bg-[#C0FF01] transition-all hover:!bg-[#396320] hover:text-white rounded-xl"
+                                            type="submit">Удалить</button>
+                                    </form>
+                                    <button data-modal-target="authentication-modal"
+                                        data-modal-toggle="authentication-modal"
                                         class="px-14 py-4 text-xl !bg-[#C0FF01] transition-all hover:!bg-[#396320] hover:text-white rounded-xl"
-                                        type="submit">Удалить</button>
-                                </form>
-                                <button data-modal-target="authentication-modal"
-                                    data-modal-toggle="authentication-modal"
-                                    class="px-14 py-4 text-xl !bg-[#C0FF01] transition-all hover:!bg-[#396320] hover:text-white rounded-xl"
-                                    type="button">
-                                    Редактировать
-                                </button>
-                            @endif
-                        </div>
-                        <form action="{{ route('basket.add') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        type="button">
+                                        Редактировать
+                                    </button>
+                                @endif
+                            </div>
+                            <form action="{{ route('basket.add') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                            <button type="submit"
-                                class="px-14 py-4 text-xl !bg-[#C0FF01] transition-all hover:!bg-[#396320] hover:text-white rounded-xl">
-                                В корзину
-                            </button>
-                        </form>
+                                <button type="submit"
+                                    class="px-14 py-4 text-xl !bg-[#C0FF01] transition-all hover:!bg-[#396320] hover:text-white rounded-xl">
+                                    В корзину
+                                </button>
+                            </form>
+                        </div>
 
                         <!-- Main modal -->
                         <div id="authentication-modal" tabindex="-1" aria-hidden="true"

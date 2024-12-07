@@ -18,7 +18,7 @@
         </nav>
     </div>
     <div class="flex items-center">
-        <form action="{{ route('product.search') }}" method="POST">
+        <form action="{{ route('product.search') }}" method="POST" class="flex items-center">
             @csrf
             <input type="search" name="word" id="word"
                 class="searchInput hidden border border-[#396320] w-96 w rounded-md mr-2 h-11 transition-all outline-none px-4 focus:ring-2 focus:ring-[#396320]">

@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <main class="w-full min-h-screen pt-32">
+    <main class="w-full min-h-screen py-20">
         <div class="px-10 relative">
             <a href="{{ route('index') }}" class="absolute">
                 <img src="{{ asset('icons/back-icon.svg') }}" alt="" class="left-0">

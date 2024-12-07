@@ -172,7 +172,11 @@
                         </div>
                         <div id="area-chart"></div>
                     </div>
-                    <a href="{{ route('admin.exel') }}">Получить отчет</a>
+                    <a href="{{ route('admin.exel') }}">
+                        <button class="w-full py-2 mt-5 !bg-[#C0FF01] transition-all hover:!bg-[#396320] hover:text-white rounded-xl">
+                            Получить отчет
+                        </button>
+                    </a>
                 </div>
             </div>
     </main>

@@ -2335,3 +2335,7 @@ body {
 main {
     min-height: calc(100vh - 96px);
 }
+
+.grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
