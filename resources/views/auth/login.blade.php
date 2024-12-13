@@ -20,6 +20,10 @@
                         class="py-4 !bg-[#C0FF01] text-xl transition-all hover:!bg-[#396320] hover:text-white rounded-xl">
                         Войти
                     </button>
+                    <a href="{{ route('login.yandex') }}"
+                        class="py-4 text-center !bg-[#C0FF01] text-xl transition-all hover:!bg-[#396320] hover:text-white rounded-xl">
+                        ЯндексID 
+                    </a>
                     <a href="{{ route('register') }}" class="text-center text-2xl transition-all hover:text-[#396320]">
                         Регистрация
                     </a>
